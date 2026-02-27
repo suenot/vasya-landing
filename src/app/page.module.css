@@ -1105,8 +1105,13 @@
   }
 
   .downloadGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .downloadCard {
@@ -1160,7 +1165,13 @@
 
 @media (max-width: 480px) {
   .downloadGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .heroTitle {
