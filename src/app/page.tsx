@@ -12,8 +12,8 @@ const translations = {
     navStt: "Transcription",
     download: "Download",
     heroTitle: "The Telegram Client for ",
-    heroTitleAccent: "Power Users",
-    heroSubtitle: "Experience a faster, more productive Telegram. Automatic voice transcription, multi-account management, and maximum privacy with local STT processing.",
+    heroTitleAccent: "Deep Focus",
+    heroSubtitle: "Experience a faster, more productive Telegram. ADHD-friendly interface, automatic voice transcription, and notifications ONLY from people you actually care about.",
     getStarted: "Get Started Now",
     learnMore: "Learn More",
     featuresTitle: "Built for Productivity",
@@ -23,6 +23,8 @@ const translations = {
     featureMultiDesc: "Switch between personal and work accounts seamlessly. Stay organized without multiple apps.",
     featurePrivacyTitle: "Privacy First",
     featurePrivacyDesc: "Use Local Whisper models to transcribe messages directly on your machine. Your data never leaves your device.",
+    featureFocusTitle: "Focus Mode (ADHD-safe)",
+    featureFocusDesc: "The 'Healthy Telegram'. Automatically hide all notifications from non-favorite contacts. Zero noise, zero distractions, maximum productivity.",
     featureNativeTitle: "Native Performance",
     featureNativeDesc: "Built with Rust and Tauri for maximum speed and minimal resource usage on macOS, Windows, and Linux.",
     sttTitle: "Speech-to-Text ",
@@ -40,15 +42,14 @@ const translations = {
     comingSoon: "Coming Soon",
     featureSummariesTitle: "Smart Summaries",
     featureSummariesDesc: "Get instant AI summaries of long group chats and channels. Stay informed without reading thousands of messages.",
-    featureAISearchTitle: "Semantic Search",
-    featureAISearchDesc: "Search by meaning, not just keywords. Find specific info using natural language queries powered by local AI.",
     mockupStatus: "online",
     mockupVoiceMsg: "Voice message",
     mockupYesterday: "Yesterday",
-    mockupGreeting: "Hey! How's it going?",
-    mockupReply: "All good, working on Vasyapp.",
-    mockupVoiceTranscription: "Hey, are we still on for the meeting at 3 PM?",
-    mockupFinalReply: "Sure, let's do it! Thanks for the invite ❤️",
+    mockupGreeting: "Hey! Just checked the new Vasyapp build.",
+    mockupReply: "Cool, how do you like the Whisper performance?",
+    mockupVoiceTranscription: "Man, the local transcription is insane! It even gets the technical terms right. Let's discuss the release tomorrow at 11 AM?",
+    mockupFinalReply: "Awesome! Totally agree, see you tomorrow.",
+    mockupChatName: "Artem (Project Lead)",
     mockupInputPlaceholder: "Write a message...",
     filterContacts: "Contacts",
     filterChats: "Chats",
@@ -65,8 +66,8 @@ const translations = {
     navStt: "Расшифровка",
     download: "Скачать",
     heroTitle: "Telegram клиент для ",
-    heroTitleAccent: "профи",
-    heroSubtitle: "Сделайте Telegram быстрее и продуктивнее. Автоматическая расшифровка голоса, управление несколькими аккаунтами и полная приватность с локальной обработкой STT.",
+    heroTitleAccent: "фокуса",
+    heroSubtitle: "Telegram здорового человека. Мессенджер для тех, кто ценит концентрацию: СДВГ-френдли интерфейс, авто-расшифровка голоса и уведомления только от важных контактов.",
     getStarted: "Начать сейчас",
     learnMore: "Узнать больше",
     featuresTitle: "Создано для продуктивности",
@@ -76,6 +77,8 @@ const translations = {
     featureMultiDesc: "Легко переключайтесь между личными и рабочими аккаунтами. Порядок без лишних приложений.",
     featurePrivacyTitle: "Приватность",
     featurePrivacyDesc: "Используйте локальные модели Whisper для расшифровки прямо на вашем устройстве. Ваши данные никуда не уходят.",
+    featureFocusTitle: "Режим Фокуса",
+    featureFocusDesc: "Тот самый 'Телеграм нормального человека'. Прячем уведомления от всех, кроме избранных. Никакого шума и лишних отвлечений.",
     featureNativeTitle: "Нативная скорость",
     featureNativeDesc: "Собрано на Rust и Tauri для максимальной скорости и минимального потребления ресурсов на macOS, Windows и Linux.",
     sttTitle: "Новый уровень ",
@@ -93,15 +96,14 @@ const translations = {
     comingSoon: "Скоро",
     featureSummariesTitle: "Умные итоги",
     featureSummariesDesc: "Получайте мгновенные ИИ-сводки длинных переписок в группах и каналах. Будьте в курсе без чтения тысяч сообщений.",
-    featureAISearchTitle: "Семантический поиск",
-    featureAISearchDesc: "Ищите по смыслу, а не только по ключевым словам. Находите нужную информацию с помощью простых запросов.",
     mockupStatus: "в сети",
     mockupVoiceMsg: "Голосовое сообщение",
     mockupYesterday: "Вчера",
-    mockupGreeting: "Привет! Как дела?",
-    mockupReply: "Все хорошо, работаю над Васяяп.",
-    mockupVoiceTranscription: "Приезжай на выходных, я испекла твой любимый пирог. Папа тоже ждет.",
-    mockupFinalReply: "Обязательно буду! Спасибо за приглашение ❤️",
+    mockupGreeting: "Привет! Посмотрел новый билд Васяяп.",
+    mockupReply: "Да, как тебе скорость работы с Whisper?",
+    mockupVoiceTranscription: "Слушай, локальная расшифровка работает просто пушка! Даже сложные термины распознает без ошибок. Давай завтра в 11 обсудим релиз?",
+    mockupFinalReply: "Круто! Согласен, давай в это время созвонимся.",
+    mockupChatName: "Артём (Project Lead)",
     mockupInputPlaceholder: "Напишите сообщение...",
     filterContacts: "Контакты",
     filterChats: "Чаты",
@@ -203,7 +205,7 @@ export default function Home() {
                     {[
                       { name: 'Pavel Durov', msg: 'The feature looks great!', time: '12:04' },
                       { name: 'Work Group', msg: 'Meeting in 5 mins', time: '11:58' },
-                      { name: 'Mom', msg: t.mockupVoiceMsg, time: '10:30', active: true, unread: 2 },
+                      { name: t.mockupChatName, msg: t.mockupVoiceMsg, time: '10:30', active: true, unread: 2 },
                       { name: 'News Channel', msg: 'Breaking news...', time: t.mockupYesterday }
                     ].map((chat, i) => (
                       <div key={i} className={`${styles.chatItem} ${chat.active ? styles.chatSelected : ''}`}>
@@ -229,7 +231,7 @@ export default function Home() {
                   <div className={styles.chatHeader}>
                     <div className={styles.chatHeaderLeft}>
                       <div className={styles.chatHeaderInfo}>
-                        <div className={styles.chatHeaderTitle}>Mom</div>
+                        <div className={styles.chatHeaderTitle}>{t.mockupChatName}</div>
                         <div className={styles.chatHeaderStatus}>{t.mockupStatus}</div>
                       </div>
                     </div>
@@ -310,6 +312,13 @@ export default function Home() {
               </div>
               <div className={styles.featureCard}>
                 <div className={styles.featureImage}>
+                  <Image src="/feature_focus_v2.png" alt="Focus Mode" fill style={{ objectFit: 'cover' }} />
+                </div>
+                <h3>{t.featureFocusTitle}</h3>
+                <p>{t.featureFocusDesc}</p>
+              </div>
+              <div className={styles.featureCard}>
+                <div className={styles.featureImage}>
                   <Image src="/feature_multi_account.png" alt="Multi-Account" fill style={{ objectFit: 'cover' }} />
                 </div>
                 <h3>{t.featureMultiTitle}</h3>
@@ -336,14 +345,6 @@ export default function Home() {
                 </div>
                 <h3>{t.featureSummariesTitle}</h3>
                 <p>{t.featureSummariesDesc}</p>
-              </div>
-              <div className={`${styles.featureCard} ${styles.featureFuture}`}>
-                <div className={styles.badge}>{t.comingSoon}</div>
-                <div className={styles.featureImage}>
-                  <Image src="/feature_semantic_search.png" alt="Semantic Search" fill style={{ objectFit: 'cover' }} />
-                </div>
-                <h3>{t.featureAISearchTitle}</h3>
-                <p>{t.featureAISearchDesc}</p>
               </div>
             </div>
           </div>
