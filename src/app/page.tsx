@@ -86,7 +86,7 @@ const translations = {
     sttCheck3: "Авто-расшифровка: Получайте текст сразу после получения сообщения.",
     sttEngineLabel: "ДВИЖОК РАСШИФРОВКИ",
     sttTranscribing: "Расшифровка...",
-    footerText: "© 2026 Vasya.app. Open source Telegram клиент.",
+    footerText: "© 2026 Васяяп. Open source Telegram клиент.",
     github: "GitHub",
     privacy: "Приватность",
     terms: "Условия",
