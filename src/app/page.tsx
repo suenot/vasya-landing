@@ -157,6 +157,8 @@ const translations = {
   }
 };
 
+const APP_VERSION = 'v0.1.1';
+
 export default function Home() {
   const [lang, setLang] = useState<Language>('en');
   const [detectedOS, setDetectedOS] = useState<'mac' | 'windows' | 'linux' | 'android' | null>(null);
@@ -236,6 +238,7 @@ export default function Home() {
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <Image src="/vasyapp.svg" alt="Vasyapp Logo" width={32} height={32} />
           <span className={styles.logoTitle}>{t.appName}</span>
+          <span className={styles.versionBadge}>{APP_VERSION}</span>
         </div>
         <nav style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
           <div className={styles.langSwitcher}>
