@@ -178,29 +178,29 @@ export default function Home() {
 
   const t = translations[lang];
 
-  const RELEASE = 'https://github.com/suenot/vasya/releases/download/v0.1.0';
+  const RELEASE = 'https://github.com/suenot/vasya/releases/download/v0.1.1';
   const downloads = {
     mac: {
       image: '/download_mac.png',
       label: t.downloadForMac,
       variants: [
-        { label: t.macSilicon + ' (.dmg)', href: `${RELEASE}/Vasyapp_0.1.0_aarch64.dmg` },
-        { label: t.macIntel + ' (.dmg)', href: `${RELEASE}/Vasyapp_0.1.0_x64.dmg` },
+        { label: t.macSilicon + ' (.dmg)', href: `${RELEASE}/Vasyapp_0.1.1_aarch64.dmg` },
+        { label: t.macIntel + ' (.dmg)', href: `${RELEASE}/Vasyapp_0.1.1_x64.dmg` },
       ],
     },
     windows: {
       image: '/download_windows.png',
       label: t.downloadForWindows,
       variants: [
-        { label: t.windowsExe + ' (.exe)', href: `${RELEASE}/Vasyapp_0.1.0_x64-setup.exe` },
+        { label: t.windowsExe + ' (.exe)', href: `${RELEASE}/Vasyapp_0.1.1_x64-setup.exe` },
       ],
     },
     linux: {
       image: '/download_linux.png',
       label: t.downloadForLinux,
       variants: [
-        { label: t.linuxDeb + ' (Ubuntu/Debian)', href: `${RELEASE}/Vasyapp_0.1.0_amd64.deb` },
-        { label: t.linuxRpm + ' (Fedora/RHEL)', href: `${RELEASE}/Vasyapp-0.1.0-1.x86_64.rpm` },
+        { label: t.linuxDeb + ' (Ubuntu/Debian)', href: `${RELEASE}/Vasyapp_0.1.1_amd64.deb` },
+        { label: t.linuxRpm + ' (Fedora/RHEL)', href: `${RELEASE}/Vasyapp-0.1.1-1.x86_64.rpm` },
       ],
     },
     android: {
