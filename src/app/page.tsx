@@ -35,6 +35,26 @@ const translations = {
     sttCheck3: "Auto-transcribe: Get text as soon as the message arrives.",
     sttEngineLabel: "TRANSCRIPTION ENGINE",
     sttTranscribing: "Transcribing...",
+    downloadTitle: "Download ",
+    downloadTitleAccent: "Vasyapp",
+    downloadSubtitle: "Available for all major platforms. Free and open source.",
+    downloadForMac: "Download for macOS",
+    downloadForWindows: "Download for Windows",
+    downloadForLinux: "Download for Linux",
+    downloadForAndroid: "Download for Android",
+    macSilicon: "Apple Silicon",
+    macIntel: "Intel",
+    linuxDeb: ".deb",
+    linuxRpm: ".rpm",
+    windowsExe: "Installer",
+    androidApk: ".apk",
+    downloadForIos: "iOS",
+    downloadForWeb: "Web",
+    iosComingSoon: "Coming Soon",
+    webComingSoon: "Coming Soon",
+    alsoAvailable: "Also available for",
+    viewAllReleases: "View all releases on GitHub",
+    recommendedForYou: "Recommended",
     footerText: "© 2026 Vasya.app. Open source Telegram client.",
     github: "GitHub",
     privacy: "Privacy Policy",
@@ -89,6 +109,26 @@ const translations = {
     sttCheck3: "Авто-расшифровка: Получайте текст сразу после получения сообщения.",
     sttEngineLabel: "ДВИЖОК РАСШИФРОВКИ",
     sttTranscribing: "Расшифровка...",
+    downloadTitle: "Скачать ",
+    downloadTitleAccent: "Васяяп",
+    downloadSubtitle: "Доступен для всех основных платформ. Бесплатный и с открытым кодом.",
+    downloadForMac: "Скачать для macOS",
+    downloadForWindows: "Скачать для Windows",
+    downloadForLinux: "Скачать для Linux",
+    downloadForAndroid: "Скачать для Android",
+    macSilicon: "Apple Silicon",
+    macIntel: "Intel",
+    linuxDeb: ".deb",
+    linuxRpm: ".rpm",
+    windowsExe: "Установщик",
+    androidApk: ".apk",
+    downloadForIos: "iOS",
+    downloadForWeb: "Web",
+    iosComingSoon: "Скоро",
+    webComingSoon: "Скоро",
+    alsoAvailable: "Также доступно для",
+    viewAllReleases: "Все релизы на GitHub",
+    recommendedForYou: "Рекомендуется",
     footerText: "© 2026 Васяяп. Open source Telegram клиент.",
     github: "GitHub",
     privacy: "Приватность",
@@ -119,6 +159,7 @@ const translations = {
 
 export default function Home() {
   const [lang, setLang] = useState<Language>('en');
+  const [detectedOS, setDetectedOS] = useState<'mac' | 'windows' | 'linux' | 'android' | null>(null);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -126,10 +167,68 @@ export default function Home() {
       if (browserLang === 'ru') {
         setLang('ru');
       }
+
+      const ua = navigator.userAgent.toLowerCase();
+      if (/android/.test(ua)) setDetectedOS('android');
+      else if (/mac/.test(ua)) setDetectedOS('mac');
+      else if (/win/.test(ua)) setDetectedOS('windows');
+      else if (/linux/.test(ua)) setDetectedOS('linux');
     }
   }, []);
 
   const t = translations[lang];
+
+  const RELEASE = 'https://github.com/suenot/vasya/releases/download/v0.1.0';
+  const downloads = {
+    mac: {
+      image: '/download_mac.png',
+      label: t.downloadForMac,
+      variants: [
+        { label: t.macSilicon + ' (.dmg)', href: `${RELEASE}/Vasyapp_0.1.0_aarch64.dmg` },
+        { label: t.macIntel + ' (.dmg)', href: `${RELEASE}/Vasyapp_0.1.0_x64.dmg` },
+      ],
+    },
+    windows: {
+      image: '/download_windows.png',
+      label: t.downloadForWindows,
+      variants: [
+        { label: t.windowsExe + ' (.exe)', href: `${RELEASE}/Vasyapp_0.1.0_x64-setup.exe` },
+      ],
+    },
+    linux: {
+      image: '/download_linux.png',
+      label: t.downloadForLinux,
+      variants: [
+        { label: t.linuxDeb + ' (Ubuntu/Debian)', href: `${RELEASE}/Vasyapp_0.1.0_amd64.deb` },
+        { label: t.linuxRpm + ' (Fedora/RHEL)', href: `${RELEASE}/Vasyapp-0.1.0-1.x86_64.rpm` },
+      ],
+    },
+    android: {
+      image: '/download_android.png',
+      label: t.downloadForAndroid,
+      variants: [
+        { label: t.androidApk, href: `${RELEASE}/app-universal-release-unsigned.apk` },
+      ],
+    },
+    ios: {
+      image: '/download_ios.png',
+      label: t.downloadForIos,
+      comingSoon: true,
+      variants: [] as { label: string; href: string }[],
+    },
+    web: {
+      image: '/download_web.png',
+      label: t.downloadForWeb,
+      comingSoon: true,
+      variants: [] as { label: string; href: string }[],
+    },
+  };
+
+  type PlatformKey = keyof typeof downloads;
+  const allPlatforms: PlatformKey[] = ['mac', 'windows', 'linux', 'android', 'ios', 'web'];
+  const platformOrder: PlatformKey[] = detectedOS
+    ? [detectedOS, ...allPlatforms.filter(p => p !== detectedOS)]
+    : allPlatforms;
 
   return (
     <div className={styles.page}>
@@ -155,7 +254,7 @@ export default function Home() {
               RU
             </button>
           </div>
-          <a href="#" className="btn-primary" style={{ padding: '0.6rem 1.2rem' }}>{t.download}</a>
+          <a href="#download" className="btn-primary" style={{ padding: '0.6rem 1.2rem' }}>{t.download}</a>
         </nav>
       </header>
 
@@ -168,7 +267,7 @@ export default function Home() {
             </h1>
             <p className={styles.heroSubtitle}>{t.heroSubtitle}</p>
             <div className={styles.heroActions}>
-              <a href="#" className="btn-primary">{t.getStarted}</a>
+              <a href="#download" className="btn-primary">{t.getStarted}</a>
               <a href="#features" className={styles.btnSecondary}>{t.learnMore}</a>
             </div>
 
@@ -350,6 +449,60 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="download" className={styles.downloadSection}>
+          <div className="container">
+            <h2 className={styles.downloadTitle}>
+              {t.downloadTitle}
+              <span className={styles.heroAccent}>{t.downloadTitleAccent}</span>
+            </h2>
+            <p className={styles.downloadSubtitle}>{t.downloadSubtitle}</p>
+
+            <div className={styles.downloadGrid}>
+              {platformOrder.map((platform) => {
+                const dl = downloads[platform];
+                const isHighlighted = platform === detectedOS;
+                const isComingSoon = 'comingSoon' in dl && dl.comingSoon;
+                return (
+                  <div
+                    key={platform}
+                    className={`${styles.downloadCard} ${isHighlighted ? styles.downloadCardHighlighted : ''} ${isComingSoon ? styles.downloadCardComingSoon : ''}`}
+                  >
+                    {isComingSoon && (
+                      <div className={styles.comingSoonBadge}>{t.comingSoon}</div>
+                    )}
+                    <div className={styles.downloadCardImage}>
+                      <Image src={dl.image} alt={dl.label} fill style={{ objectFit: 'cover' }} />
+                    </div>
+                    <h3 className={styles.downloadCardTitle}>{dl.label}</h3>
+                    {!isComingSoon && (
+                      <div className={styles.downloadVariants}>
+                        {dl.variants.map((v) => (
+                          <a
+                            key={v.href}
+                            href={v.href}
+                            className={styles.downloadBtn}
+                          >
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
+                            {v.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            <a
+              href="https://github.com/suenot/vasya/releases"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.allReleasesLink}
+            >
+              {t.viewAllReleases} →
+            </a>
+          </div>
+        </section>
 
       </main>
 

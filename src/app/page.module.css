@@ -762,6 +762,208 @@
   font-style: italic;
 }
 
+/* ─── Download Section ─── */
+.downloadSection {
+  padding: 120px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+.downloadSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px;
+  height: 1000px;
+  background: radial-gradient(circle, rgba(51, 144, 236, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.downloadTitle {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  position: relative;
+  z-index: 1;
+}
+
+.downloadSubtitle {
+  color: var(--text-secondary);
+  font-size: 1.25rem;
+  margin-bottom: 4rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.downloadGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.downloadCard {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+}
+
+.downloadCard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at top right, rgba(51, 144, 236, 0.15) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.downloadCard:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: rgba(51, 144, 236, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(51, 144, 236, 0.1);
+}
+
+.downloadCard:hover::after {
+  opacity: 1;
+}
+
+.downloadCardHighlighted {
+  border-color: rgba(51, 144, 236, 0.5);
+  background: rgba(51, 144, 236, 0.05);
+  box-shadow: 0 0 40px rgba(51, 144, 236, 0.1);
+}
+
+.downloadCardHighlighted::before {
+  content: 'RECOMMENDED';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent-color);
+  color: white;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 0 0 10px 10px;
+  letter-spacing: 0.05em;
+  z-index: 2;
+}
+
+.downloadCardComingSoon {
+  opacity: 0.8;
+}
+
+.comingSoonBadge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.downloadCardImage {
+  width: 100%;
+  height: 180px;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.downloadCardTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.downloadVariants {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.downloadBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.downloadBtn:hover {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(51, 144, 236, 0.4);
+}
+
+.allReleasesLink {
+  display: inline-block;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  margin-top: 1rem;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.allReleasesLink:hover {
+  color: var(--accent-color);
+  border-bottom-color: var(--accent-color);
+}
+
 .footer {
   padding: 5rem 2rem;
   border-top: 1px solid var(--border-color);
@@ -894,6 +1096,23 @@
     padding: 60px 0;
   }
 
+  .downloadSection {
+    padding: 60px 0;
+  }
+
+  .downloadTitle {
+    font-size: 2rem;
+  }
+
+  .downloadGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .downloadCard {
+    padding: 1.5rem 1rem;
+  }
+
   .featuresGrid {
     gap: 1.5rem;
     padding: 0 0.5rem;
@@ -940,6 +1159,10 @@
 }
 
 @media (max-width: 480px) {
+  .downloadGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .heroTitle {
     font-size: 2.2rem;
   }
